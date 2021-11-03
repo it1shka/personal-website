@@ -12,4 +12,7 @@ router.use(function(req, res, next) {
 router.get('/', controller.renderMain)
 router.post('/add-admin', controller.addAdmin)
 
+router.get('/create-post', controller.renderPostForm)
+router.post('/create-post', controller.createPost)
+
 module.exports = router

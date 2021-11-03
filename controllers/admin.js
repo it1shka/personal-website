@@ -15,6 +15,14 @@ class AdminController {
     }
   }
 
+  async renderPostForm(req, res) {
+    res.render('admin/createpost')
+  }
+
+  async createPost(req, res) {
+    res.send('__to be continued__')
+  }
+
 }
 
 module.exports = new AdminController

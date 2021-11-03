@@ -2,8 +2,8 @@
 
 <div class="container-lg mt-4">
   <h1>Админ <%= loggedUser.username %></h1>
-  <a href="/admin/create-post" class="btn btn-primary">Создать пост</a>
-  <a href="/admin/create-project" class="btn btn-primary">Создать проект</a>
+  <a href="admin/create-post" class="btn btn-primary">Создать пост</a>
+  <a href="admin/create-project" class="btn btn-primary">Создать проект</a>
 
   <div class="card my-4">
     <div class="card-body">
@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <form action="/admin/add-admin" method="post" class="w-25">
+  <form action="admin/add-admin" method="post" style="width: 280px;">
     <h3>Добавить админа</h3>
     <div class="form-group">
       <label for="email">Эл. почта</label>
