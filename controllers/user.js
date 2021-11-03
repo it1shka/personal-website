@@ -12,12 +12,12 @@ class UserController {
     try {
       const user = await User.findOne({ email })
       const hashedPwd = user.password
-      const isValid = bcrypt.compare(password, hashedPwd)
+      const isValid = await bcrypt.compare(password, hashedPwd)
       if(isValid) {
         req.session.loggedUser = user
         res.redirect('/')
       }
-    } catch(e) {  } finally {
+    } finally {
       res.render('login', { email, password })
     }
   }
@@ -37,9 +37,14 @@ class UserController {
       const newUser = new User({ username, email, password: hashedPwd })
       req.session.loggedUser = await newUser.save()
       res.redirect('/')
-    } catch(e) {  } finally {
+    } finally {
       res.render('signup', { username, email, password, confirmPassword })
     }
+  }
+
+  logoutUser(req, res) {
+    delete req.session.loggedUser
+    res.redirect('/user/login')
   }
 }
 
