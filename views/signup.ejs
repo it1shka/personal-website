@@ -1,0 +1,30 @@
+<%- include('_header.ejs') %>
+
+<div class="container-lg">
+  <div class="row">
+  <div class="col-sm-4">
+    <h2 class="mt-4">Регистрация</h2>
+    <form action="/user/signup" method="post">
+      <div class="form-group">
+        <label for="username">Юзернейм</label>
+        <input type="text" name="username" class="form-control" id="username" value="<%= locals.username %>" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Адрес электронной почты</label>
+        <input type="email" name="email" class="form-control" id="email" value="<%= locals.email %>" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Пароль</label>
+        <input type="password" name="password" class="form-control" id="password" value="<%= locals.password %>" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Подтвердите пароль</label>
+        <input type="password" name="confirmPassword" class="form-control" id="confirm-password" value="<%= locals.confirmPassword %>" required>
+      </div>
+      <button type="submit" class="btn btn-success mt-2">Зарегистрироваться</button>
+    </form>
+  </div>
+  </div>
+</div>
+
+<%- include('_footer.ejs') %>

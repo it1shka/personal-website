@@ -1,0 +1,60 @@
+<%- include('_header.ejs') %>
+
+<div class="container-lg my-4">
+  <div class="row">
+    <div class="col-md">
+      <div class="card mb-4">
+        <img class="card-img-top" src="/blog.png" alt="Blog">
+        <div class="card-body">
+          <h5 class="card-title">Блог</h5>
+          <h6 class="card-subtitle text-muted">
+            Недавние посты:
+          </h6>
+          <div class="list-group mt-3">
+            <% for(const {title, href} of posts) { %>
+            <a class="list-group-item list-group-item-action" href="<%= href %>"><%= title %></a>
+            <% } %>
+          </div>
+          <a href="/blog" class="btn btn-primary mt-3">Подробнее</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md">
+      <div class="card mb-4">
+        <img class="card-img-top" src="/projects.jpg" alt="Projects">
+        <div class="card-body">
+          <h5 class="card-title">Проекты</h5>
+          <h6 class="card-subtitle text-muted">
+            Наиболее актуальные:
+          </h6>
+          <div class="list-group mt-3">
+            <% for(const {title, href} of projects) { %>
+            <a class="list-group-item list-group-item-action" href="<%= href %>"><%= title %></a>
+            <% } %>
+          </div>
+          <a href="/projects" class="btn btn-primary mt-3">Подробнее</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Админы</h5>
+          <h6 class="card-subtitle text-muted">
+            Пользователи с привилегиями:
+          </h6>
+          <ul class="list-group mt-3">
+            <% for(const name of admins) { %>
+            <li class="list-group-item"><%= name %></li>
+            <% } %>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%- include('_footer.ejs') %>
