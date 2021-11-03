@@ -41,8 +41,13 @@
             <li class="nav-item" style="margin-left: auto;">
               <h5 class="text-muted">Добро пожаловать, <%= loggedUser.username %>!</h5>
             </li>
+            <% if(loggedUser.role === 'admin') { %>
             <li class="nav-item mx-2">
-              <a href="/user/logout" class="btn btn-outline-warning">Выйти</a>
+              <a href="/admin" class="btn btn-success">Админка</a>
+            </li>
+            <% } %>
+            <li class="nav-item mx-2">
+              <a href="/user/logout" class="btn btn-outline-danger">Выйти</a>
             </li>
 
             <% } %>

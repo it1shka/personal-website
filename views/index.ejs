@@ -38,21 +38,23 @@
       </div>
     </div>
 
+    
     <div class="col-md">
       <div class="card mb-4">
         <div class="card-body">
-          <h5 class="card-title">Админы</h5>
+          <h5 class="card-title">Самые активные пользователи</h5>
           <h6 class="card-subtitle text-muted">
-            Пользователи с привилегиями:
+            Просто умнички:
           </h6>
           <ul class="list-group mt-3">
-            <% for(const name of admins) { %>
+            <% for(const name of users) { %>
             <li class="list-group-item"><%= name %></li>
             <% } %>
             </ul>
         </div>
       </div>
     </div>
+    
 
   </div>
 </div>

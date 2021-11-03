@@ -1,0 +1,39 @@
+<%- include('../_header.ejs') %>
+
+<div class="container-lg mt-4">
+  <h1>Админ <%= loggedUser.username %></h1>
+  <a href="/admin/create-post" class="btn btn-primary">Создать пост</a>
+  <a href="/admin/create-project" class="btn btn-primary">Создать проект</a>
+
+  <div class="card my-4">
+    <div class="card-body">
+      <h5 class="card-title">Админы</h5>
+      <h6 class="card-subtitle text-muted">
+        Пользователи с привилегиями:
+      </h6>
+      <% if(locals.admins != undefined) { %>
+
+      <ol class="list-group list-group-numbered mt-3">
+        <% for(const {username, email} of admins) { %>
+        <li class="list-group-item"><%= username %>, <%= email %></li>
+        <% } %>
+      </ol>
+
+      <% } else { %>
+      <h5 class="text-muted mt-4">Здесь пусто</h5>
+      <% } %>
+    </div>
+  </div>
+
+  <form action="/admin/add-admin" method="post" class="w-25">
+    <h3>Добавить админа</h3>
+    <div class="form-group">
+      <label for="email">Эл. почта</label>
+      <input class="form-control" type="email" id="email" name="email" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Добавить</button>
+  </form>
+
+</div>
+
+<%- include('../_footer.ejs') %>

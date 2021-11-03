@@ -28,27 +28,26 @@ app.get('/', (req, res) => {
     {title: 'Project 2', href: "#"},
     {title: 'Project 3', href: "#"}
   ]
-  const admins = [
+  const mostActiveUsers = [
     'Tikhon',
     'Alex'
   ]
   res.render('index', {
     posts: recentPosts,
     projects: bestProjects,
-    admins: admins
+    users: mostActiveUsers
   })
-})
-
-app.get('/test', (req, res) => {
-  res.json(req.session.loggedUser)
 })
 
 const userRouter = require('./routes/user')
 app.use('/user', userRouter)
 
+const adminRouter = require('./routes/admin')
+app.use('/admin', adminRouter)
+
 app.use((err, req, res, next) => {
   res.status(500).render('500')
-  // console.log(err)
+  console.log(err)
 })
 
 app.use((req, res) => {
