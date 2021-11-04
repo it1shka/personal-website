@@ -45,6 +45,9 @@ app.use('/user', userRouter)
 const adminRouter = require('./routes/admin')
 app.use('/admin', adminRouter)
 
+const blogRouter = require('./routes/blog')
+app.use('/blog', blogRouter)
+
 app.use((err, req, res, next) => {
   res.status(500).render('500')
   console.log(err)
