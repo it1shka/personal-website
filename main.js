@@ -2,9 +2,11 @@ require('dotenv').config()
 const express = require('express')
 const expressSession = require('express-session')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 
 const app = express()
 app.use(express.urlencoded({extended: false}))
+app.use(methodOverride('_method'))
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(expressSession({

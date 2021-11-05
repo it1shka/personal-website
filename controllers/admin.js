@@ -7,17 +7,6 @@ class AdminController {
     res.render('admin/index', { admins })
   }
 
-  /*
-  async addAdmin(req, res) {
-    try {
-      const email = req.body.email
-      await User.findOneAndUpdate({ email }, { role: 'admin' })
-    } finally {
-      res.redirect('/admin')
-    }
-  }
-  */
-
   addAdmin(req, res) {
     try {
       const email = req.body.email
@@ -34,20 +23,30 @@ class AdminController {
   async createPost(req, res) {
     const author = req.session.loggedUser.username
     const title = req.body.title
-    const desc = req.body.desc 
+    const description = req.body.desc 
     const markdown = req.body.markdown
 
     let post = new Post({
       author, title,
-      desc, markdown
+      description, markdown
     })
 
     try {
       post = await post.save()
-      res.redirect('/admin')
+      res.redirect('/blog')
     } catch {
       res.render('admin/createpost', { post })
     }
+  }
+
+  async deletePost(req, res) {
+    const id = req.params.id
+    await Post.findByIdAndRemove(id)
+    res.redirect('/blog')
+  }
+
+  updatePost(req, res) {
+
   }
 
 }

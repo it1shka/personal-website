@@ -1,8 +1,7 @@
 const express = require('express')
+const controller = require('../controllers/blog')
 const router = new express.Router()
 
-router.get('/', (req, res) => {
-  res.send('My blog!')
-})
+router.get('/', controller.renderMain)
 
 module.exports = router

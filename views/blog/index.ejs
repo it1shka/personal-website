@@ -1,0 +1,31 @@
+<%- include('../_header.ejs') %>
+
+<div class="container-lg mt-4">
+  <h1>Мой блог</h1>
+  <div class="mt-4">
+  <% for(const post of posts) { %>
+  
+  <div class="card mt-2">
+    <div class="card-body">
+      <h2 class="card-title"><%= post.title %></h2>
+      <h5 class="card-subtitle text-muted"><%=post.author%>, <%=post.createdAt.toLocaleDateString()%></h5>
+      <p class="card-text mt-2"><%= post.description %></p>
+      <div class="mt-2">
+        <a href="" class="btn btn-primary">Подробнее</a>
+        <% if(loggedUser && loggedUser.role == 'admin') { %>
+        <form action="/admin/post/<%=post.id%>?_method=PUT" method="post" class="d-inline-block">
+          <button type="submit" class="btn btn-outline-warning">Редактировать</button>
+        </form>
+        <form action="/admin/post/<%=post.id%>?_method=DELETE" method="post" class="d-inline-block">
+          <button type="submit" class="btn btn-outline-danger">Удалить</button>
+        </form>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <% } %>
+  </div>
+</div>
+
+<%- include('../_footer.ejs') %>

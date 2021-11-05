@@ -21,7 +21,10 @@ const PostSchema = new mongoose.Schema({
     required: true
   },
   html: String, // compiled markdown
-  slug: String  // like a url
+  slug: {
+    type: String,
+    unique: true
+  }  // like a url
 })
 PostSchema.pre('validate', function(next) {
   if(this.markdown) {
