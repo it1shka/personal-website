@@ -19,27 +19,8 @@ app.use(function(req, res, next) {
   next()
 })
 
-app.get('/', (req, res) => {
-  const recentPosts = [
-    {title: 'Post 1', href: "#"},
-    {title: 'Post 2', href: "#"},
-    {title: 'Post 3', href: "#"}
-  ]
-  const bestProjects = [
-    {title: 'Project 1', href: "#"},
-    {title: 'Project 2', href: "#"},
-    {title: 'Project 3', href: "#"}
-  ]
-  const mostActiveUsers = [
-    'Tikhon',
-    'Alex'
-  ]
-  res.render('index', {
-    posts: recentPosts,
-    projects: bestProjects,
-    users: mostActiveUsers
-  })
-})
+const mainPageHandler = require('./mainController')
+app.get('/', mainPageHandler)
 
 const userRouter = require('./routes/user')
 app.use('/user', userRouter)

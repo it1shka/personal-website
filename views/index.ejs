@@ -11,8 +11,8 @@
             Недавние посты:
           </h6>
           <div class="list-group mt-3">
-            <% for(const {title, href} of posts) { %>
-            <a class="list-group-item list-group-item-action" href="<%= href %>"><%= title %></a>
+            <% for(const post of posts) { %>
+            <a class="list-group-item list-group-item-action" href="/blog/<%= post.slug %>"><%= post.title %></a>
             <% } %>
           </div>
           <a href="/blog" class="btn btn-primary mt-3">Подробнее</a>

@@ -1,0 +1,24 @@
+<%- include('../_header.ejs') %>
+<div class="container-lg mt-4">
+  <h1><%= post.title %></h1>
+  <h3 class="text-muted">От <%= post.author %>, <%= post.createdAt.toLocaleDateString() %></h3>
+
+  <a class="btn btn-outline-primary" href="/blog">Все посты</a>
+  <% if(loggedUser && loggedUser.role == 'admin') { %>
+
+  <form action="/admin/post/<%=post.id%>?_method=PUT" method="post" class="d-inline-block">
+    <button type="submit" class="btn btn-outline-warning">Редактировать</button>
+  </form>
+  <form action="/admin/post/<%=post.id%>?_method=DELETE" method="post" class="d-inline-block">
+    <button type="submit" class="btn btn-outline-danger">Удалить</button>
+  </form>
+
+  <% } %>
+
+  <hr>
+
+  <article>
+    <%- post.html %>
+  </article>
+</div>
+<%- include('../_footer.ejs') %>

@@ -11,7 +11,7 @@
       <h5 class="card-subtitle text-muted"><%=post.author%>, <%=post.createdAt.toLocaleDateString()%></h5>
       <p class="card-text mt-2"><%= post.description %></p>
       <div class="mt-2">
-        <a href="" class="btn btn-primary">Подробнее</a>
+        <a href="/blog/<%= post.slug %>" class="btn btn-primary">Подробнее</a>
         <% if(loggedUser && loggedUser.role == 'admin') { %>
         <form action="/admin/post/<%=post.id%>?_method=PUT" method="post" class="d-inline-block">
           <button type="submit" class="btn btn-outline-warning">Редактировать</button>
