@@ -15,6 +15,7 @@ class UserController {
       const isValid = await bcrypt.compare(password, hashedPwd)
       if(isValid) {
         req.session.loggedUser = user
+        delete req.session.mostActiveUsers
         res.redirect('/')
       }
     } finally {

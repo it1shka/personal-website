@@ -11,14 +11,22 @@ async function mainPage(req, res) {
     {title: 'Project 3', href: "#"}
   ]
 
-  let mostActiveUsers = await User.aggregate([{$sample: {size: 3}}]).exec()
-  
-  mostActiveUsers = mostActiveUsers.map(user => user.username)
+  if(req.session.mostActiveUsers == undefined) {
+    let mostActiveUsers
+    if(req.session.loggedUser != undefined) {
+      mostActiveUsers = await User.aggregate([{$sample: {size: 2}}]).exec()
+      mostActiveUsers.unshift(req.session.loggedUser)
+    } else {
+      mostActiveUsers = await User.aggregate([{$sample: {size: 3}}]).exec()
+    }
+    mostActiveUsers = mostActiveUsers.map(user => user.username)
+    req.session.mostActiveUsers = mostActiveUsers
+  }
   
   res.render('index', {
     posts: recentPosts,
     projects: bestProjects,
-    users: mostActiveUsers
+    users: req.session.mostActiveUsers
   })
 }
 
